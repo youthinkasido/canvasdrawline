@@ -6,15 +6,15 @@ class Grid {
             size: 50,
             width: null,
             height: null,
-            startX1: 10,
-            startY1: 10,
+            startX1: 0,
+            startY1: 0,
             endX1: 1000,
-            endY1: 10,
-            startX2: 10,
-            startY2: 10,
+            endY1: 0,
+            startX2: 0,
+            startY2: 0,
             endX2: 1000,
-            endY2: 10,
-            colors: ['orange', 'red', 'green', 'blue', 'black', 'navy']
+            endY2: 0,
+            elements: ['🔥', '🕵🏻', '✊', '🔍', '❌', '🌴']
         }
     }
     generateGrid() {
@@ -24,33 +24,28 @@ class Grid {
         }
 
         this.generateHorizontal(context);
-        this.generateVertical(context);
+
+
+
 
     }
 
     generateHorizontal(context) {
-        for (let i = 0; i < this.grid.size; i++) {
-            context.beginPath();
-            context.moveTo(this.grid.startX1, this.grid.startY1);
-            context.lineTo(this.grid.endX1, this.grid.endY1)
-            context.strokeStyle = this.grid.colors[Math.floor(Math.random() * this.grid.colors.length) + 1]
-            context.stroke()
-
-            this.grid.startY1 += this.grid.size
-            this.grid.endY1 += this.grid.size
+        let j = 0;
+        while (j < 10) {
+            for (let i = 0; i < this.grid.size; i++) {
+                // context.fillRect(this.grid.startX1, this.grid.startY1, this.grid.size, this.grid.size)
+                // context.fillStyle = this.grid.colors[Math.floor(Math.random() * this.grid.colors.length)]
+                let randomElement = this.grid.elements[Math.floor(Math.random() * this.grid.elements.length)]
+                context.fillText(randomElement, this.grid.startX1, this.grid.startY1, this.grid.size)
+                this.grid.startX1 += this.grid.size / 4
+            }
+            this.grid.startY1 += this.grid.size / 2.0;
+            this.grid.startX1 = 0;
+            j++
         }
     }
 
-    generateVertical(context) {
-        for (let i = 0; i < this.grid.size; i++) {
-            context.beginPath();
-            context.moveTo(this.grid.startX2, this.grid.startY2);
-            context.lineTo(this.grid.endY2, this.grid.endX2)
-            context.stroke()
-            this.grid.startX2 += this.grid.size
-            this.grid.endY2 += this.grid.size
-        }
-    }
 }
 
 let grid = new Grid();
