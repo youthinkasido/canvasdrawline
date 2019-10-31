@@ -32,7 +32,7 @@ class Grid {
 
     generateHorizontal(context) {
         let j = 0;
-        while (j < 10) {
+        while (j < 15) {
             for (let i = 0; i < this.grid.size; i++) {
                 // context.fillRect(this.grid.startX1, this.grid.startY1, this.grid.size, this.grid.size)
                 // context.fillStyle = this.grid.colors[Math.floor(Math.random() * this.grid.colors.length)]
